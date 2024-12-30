@@ -15,7 +15,7 @@ Add the following dependency in your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  frosty_float_navigation: ^1.0.0
+  frosty_float_navigation: ^1.0.1
 ```
 
 Then, run:
