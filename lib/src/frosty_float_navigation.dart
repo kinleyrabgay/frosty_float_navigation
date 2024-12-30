@@ -9,7 +9,10 @@ class FrostyFloatNavigation extends StatefulWidget {
   const FrostyFloatNavigation({
     super.key,
     required this.item,
-  });
+  }) : assert(
+          item.length >= 3,
+          'FrostyFloatNavigation requires at least 3 items.',
+        );
 
   @override
   State<FrostyFloatNavigation> createState() => _FrostyFloatNavigationState();
@@ -89,7 +92,7 @@ class _FrostyFloatNavigationState extends State<FrostyFloatNavigation> {
                 ),
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(
                   widget.item.length,
                   (index) => _buildMenuItem(widget.item[index], index),

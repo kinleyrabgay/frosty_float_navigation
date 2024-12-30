@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.0.1 - Enhancements and Validation
+
+### 🛠️ Improvements
+- **Updated Alignment:** Changed `mainAxisAlignment` to `MainAxisAlignment.spaceBetween` in the bottom navigation bar for consistent spacing between items.
+
+### 🚨 Validation
+- **Minimum Item Count Assertion:** Added an assertion to ensure that the navigation bar requires at least **3 items** to function properly.
+
+### 🧹 Refactoring
+- Improved readability and maintainability of the `_buildMenuItem` method.
+- Cleaned up unnecessary widget nesting.
+
+### 🐞 Bug Fixes
+- Addressed potential layout inconsistencies when fewer than 3 items were passed to the navigation bar.
+
+---
+
+**Note:** Ensure that the `item` list contains at least **3 items** when using `FrostyFloatNavigation`.
+
 ## 1.0.0 - Improvements and Refinements
 
 ### 🛠️ Improvements
