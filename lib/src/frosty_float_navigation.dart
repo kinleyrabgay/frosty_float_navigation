@@ -53,14 +53,9 @@ class _FrostyFloatNavigationState extends State<FrostyFloatNavigation> {
           color: isSelected ? const Color(0xFF2A4D69) : Colors.transparent,
           borderRadius: BorderRadius.circular(_borderRadius),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              menu.icon,
-              color: isSelected ? Color(0xFFFFFFFF) : Color(0xFFBDBDBD),
-            ),
-          ],
+        child: Icon(
+          menu.icon,
+          color: isSelected ? Color(0xFFFFFFFF) : Color(0xFFBDBDBD),
         ),
       ),
     );
@@ -93,13 +88,11 @@ class _FrostyFloatNavigationState extends State<FrostyFloatNavigation> {
                   color: Colors.white.withValues(alpha: _borderOpacity),
                 ),
               ),
-              child: SafeArea(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: List.generate(
-                    widget.item.length,
-                    (index) => _buildMenuItem(widget.item[index], index),
-                  ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: List.generate(
+                  widget.item.length,
+                  (index) => _buildMenuItem(widget.item[index], index),
                 ),
               ),
             ),
