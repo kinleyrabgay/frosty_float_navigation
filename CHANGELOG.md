@@ -12,4 +12,4 @@
 - Clean and modular widget design for easy customization.
 
 ### 📦 Dependencies
-- Flutter SDK version >=3.0.0
+- Flutter SDK version ^3.6.0
