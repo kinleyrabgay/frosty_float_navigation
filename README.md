@@ -28,6 +28,8 @@ flutter pub get
 
 ```dart
 import 'package:frosty_float_navigation/frosty_float_navigation.dart';
+import 'package:iconsax/iconsax.dart';
+import '.......';
 
 void main() {
   runApp(MyApp());
@@ -40,15 +42,15 @@ class MyApp extends StatelessWidget {
       home: FrostyFloatNavigation(
         items: [
           ForstyFloatItem(
-            icon: Icons.home,
+            icon: Iconsax.home,
             screen: HomeScreen(),
           ),
           ForstyFloatItem(
-            icon: Icons.search,
+            icon: Iconsax.search,
             screen: SearchScreen(),
           ),
           ForstyFloatItem(
-            icon: Icons.settings,
+            icon: Iconsax.settings,
             screen: SettingsScreen(),
           ),
         ],
