@@ -3,12 +3,39 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:frosty_float_navigation/src/frosty_float_item.dart';
 
+/// **Style Configuration for FrostyFloatNavigation**
+class FrostyFloatNavigationStyle {
+  final double blurAmount;
+  final double borderRadius;
+  final double containerOpacity;
+  final double borderOpacity;
+  final EdgeInsets navigationPadding;
+  final EdgeInsets itemPadding;
+  final Color selectedIconColor;
+  final Color selectedContainerColor;
+  final Color unselectedIconColor;
+
+  const FrostyFloatNavigationStyle({
+    this.blurAmount = 10.0,
+    this.borderRadius = 100.0,
+    this.containerOpacity = 0.3,
+    this.borderOpacity = 0.2,
+    this.navigationPadding = const EdgeInsets.all(16.0),
+    this.itemPadding = const EdgeInsets.all(8.0),
+    this.selectedIconColor = const Color(0xFFFFFFFF),
+    this.selectedContainerColor = const Color(0xFF2A4D69),
+    this.unselectedIconColor = const Color(0xFFBDBDBD),
+  });
+}
+
 class FrostyFloatNavigation extends StatefulWidget {
   final List<ForstyFloatItem> item;
+  final FrostyFloatNavigationStyle style;
 
   const FrostyFloatNavigation({
     super.key,
     required this.item,
+    this.style = const FrostyFloatNavigationStyle(),
   }) : assert(
           item.length >= 3,
           'FrostyFloatNavigation requires at least 3 items.',
@@ -20,17 +47,6 @@ class FrostyFloatNavigation extends StatefulWidget {
 
 class _FrostyFloatNavigationState extends State<FrostyFloatNavigation> {
   late int _selectedIndex;
-  // Extract constants
-  static const double _blurAmount = 10.0;
-  static const double _borderRadius = 100.0;
-
-  static const double _containerOpacity = 0.3;
-  static const double _borderOpacity = 0.2;
-
-  // Memoize padding values
-  static const EdgeInsets _outerPadding = EdgeInsets.all(16.0);
-
-  static const EdgeInsets _innerPadding = EdgeInsets.all(8.0);
 
   @override
   void initState() {
@@ -46,19 +62,21 @@ class _FrostyFloatNavigationState extends State<FrostyFloatNavigation> {
 
   Widget _buildMenuItem(ForstyFloatItem menu, int index) {
     final isSelected = _selectedIndex == index;
+    final style = widget.style;
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () => _onItemTapped(index),
       child: Container(
-        padding: const EdgeInsets.all(14),
+        padding: style.itemPadding,
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFF2A4D69) : Colors.transparent,
-          borderRadius: BorderRadius.circular(_borderRadius),
+          color: isSelected ? style.selectedContainerColor : Colors.transparent,
+          borderRadius: BorderRadius.circular(style.borderRadius),
         ),
         child: Icon(
           menu.icon,
-          color: isSelected ? Color(0xFFFFFFFF) : Color(0xFFBDBDBD),
+          color:
+              isSelected ? style.selectedIconColor : style.unselectedIconColor,
         ),
       ),
     );
@@ -66,6 +84,8 @@ class _FrostyFloatNavigationState extends State<FrostyFloatNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    final style = widget.style;
+
     return Scaffold(
       extendBody: true,
       resizeToAvoidBottomInset: false,
@@ -74,21 +94,21 @@ class _FrostyFloatNavigationState extends State<FrostyFloatNavigation> {
         children: widget.item.map((item) => item.screen).toList(),
       ),
       bottomNavigationBar: Padding(
-        padding: _outerPadding,
+        padding: style.navigationPadding,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(_borderRadius),
+          borderRadius: BorderRadius.circular(style.borderRadius),
           child: BackdropFilter(
             filter: ImageFilter.blur(
-              sigmaX: _blurAmount,
-              sigmaY: _blurAmount,
+              sigmaX: style.blurAmount,
+              sigmaY: style.blurAmount,
             ),
             child: Container(
-              padding: _innerPadding,
+              padding: style.itemPadding,
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: _containerOpacity),
-                borderRadius: BorderRadius.circular(_borderRadius),
+                color: Colors.white.withValues(alpha: style.containerOpacity),
+                borderRadius: BorderRadius.circular(style.borderRadius),
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: _borderOpacity),
+                  color: Colors.white.withValues(alpha: style.borderOpacity),
                 ),
               ),
               child: Row(

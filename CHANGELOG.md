@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.0.2 - 2024-12-30
+
+### 🛠️ Improvements & New Features
+- **Custom Styling Support:**  
+   - Added support for custom styling with `FrostyFloatNavigationStyle` to allow users to customize:  
+     - `navigationPadding` (formerly `outerPadding`)  
+     - `itemPadding` (formerly `innerPadding`)  
+     - `borderRadius`  
+     - `selectedIconColor`  
+     - `selectedContainerColor`  
+     - `unselectedIconColor`  
+     - `blurAmount`  
+     - `containerOpacity`  
+     - `borderOpacity`  
+
+   - This feature enables more modular styling while preserving the default design.  
+
+- **Deprecated Method Replacement:**  
+   - Replaced the deprecated `withOpacity(...)` method with `withValues(alpha: ...)` for better performance and compatibility.  
+
+### 📚 Documentation Update:
+- Updated the documentation to reflect new styling options and how to use `FrostyFloatNavigationStyle` for customizations.
+
 ## 1.0.1 - Enhancements and Validation
 
 ### 🛠️ Improvements

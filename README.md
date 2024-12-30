@@ -8,6 +8,7 @@ A sleek and modern frosted glass-style floating bottom navigation bar for Flutte
 * 🧩 **Customizable Items**: Add dynamic navigation items with icons and screens
 * 🎯 **Smooth Navigation**: Seamless transitions between screens
 * 🛠️ **Easy Integration**: Minimal setup required
+* 🎨 **Custom Styling**: Easily customize the navigation bar's appearance, including padding, colors, and opacity.
 
 ## 📲 Installation
 
@@ -15,7 +16,7 @@ Add the following dependency in your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  frosty_float_navigation: ^1.0.1
+  frosty_float_navigation: ^1.0.2
 ```
 
 Then, run:
@@ -54,6 +55,18 @@ class MyApp extends StatelessWidget {
             screen: SettingsScreen(),
           ),
         ],
+        // Custom Styling
+        style: FrostyFloatNavigationStyle(
+          blurAmount: 8.0,
+          borderRadius: 50.0,
+          containerOpacity: 0.5,
+          borderOpacity: 0.3,
+          navigationPadding: EdgeInsets.all(20.0),  // Outer padding for the navigation bar
+          itemPadding: EdgeInsets.all(12.0),  // Padding for each navigation item
+          selectedIconColor: Colors.white,  // Color for selected icon
+          selectedContainerColor: Colors.blueAccent,  // Color for the selected item container
+          unselectedIconColor: Colors.grey,  // Color for unselected icon
+        ),
       ),
     );
   }
@@ -67,6 +80,7 @@ class MyApp extends StatelessWidget {
 | Property | Type | Description |
 |----------|------|-------------|
 | items | `List<ForstyFloatItem>` | List of navigation items |
+| style | `FrostyFloatNavigationStyle` | Custom styling for the navigation bar (optional) |
 
 ### ForstyFloatItem
 
@@ -74,6 +88,20 @@ class MyApp extends StatelessWidget {
 |----------|------|-------------|
 | icon | `IconData` | Icon for the navigation item |
 | screen | `Widget` | Screen to display on tap |
+
+### FrostyFloatNavigationStyle
+
+| Property | Type | Description |
+|----------|------|-------------|
+| blurAmount | `double` | Amount of blur for the background (default: 10.0) |
+| borderRadius | `double` | Border radius for the navigation bar (default: 100.0) |
+| containerOpacity | `double` | Opacity of the container (default: 0.3) |
+| borderOpacity | `double` | Opacity of the border (default: 0.2) |
+| navigationPadding | `EdgeInsets` | Padding for the outer navigation container (default: `EdgeInsets.all(16.0)`) |
+| itemPadding | `EdgeInsets` | Padding for each navigation item (default: `EdgeInsets.all(8.0)`) |
+| selectedIconColor | `Color` | Color of the selected icon (default: white) |
+| selectedContainerColor | `Color` | Color of the selected item container (default: `0xFF2A4D69`) |
+| unselectedIconColor | `Color` | Color of the unselected icon (default: `0xFFBDBDBD`) |
 
 ## 🎨 Customization
 
